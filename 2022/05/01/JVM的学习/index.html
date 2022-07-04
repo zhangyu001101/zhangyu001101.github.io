@@ -23,7 +23,7 @@
 <meta property="og:image" content="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608150736.png">
 <meta property="og:image" content="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608150800.png">
 <meta property="article:published_time" content="2022-05-01T14:02:35.000Z">
-<meta property="article:modified_time" content="2022-06-17T06:53:25.766Z">
+<meta property="article:modified_time" content="2022-06-24T01:15:01.451Z">
 <meta property="article:author" content="zhangyu">
 <meta property="article:tag" content="JVM">
 <meta name="twitter:card" content="summary">
@@ -394,7 +394,8 @@
 <p>出现了循环引用的时候，两个对象的计数都是1，导致两个对象都无法被释放</p>
 </li>
 <li><p>可达性分析算法</p>
-<p><strong>原理</strong>：Java虚拟机中的垃圾回收采用可达性分析来探索所有存活的对象，扫描堆中的对象，看是否能够沿着GC Root对象为期待你的引用链找到该对象，找不到表示可以回收。</p>
+<p><strong>原理</strong>：Java虚拟机中的垃圾回收采用可达性分析来探索所有存活的对象，扫描堆中的对象，看是否能够沿着GC Root对象为引用链找到该对象，找不到表示可以回收。</p>
+<p><strong>理解：</strong>葡萄，跟葡萄的根相连的是存活的对象，掉的不与根相连的是可以回收的对象。</p>
 <p><strong>可以作为GC Root的对象：</strong></p>
 <ul>
 <li>虚拟机栈（栈帧中的本地变量表）中引用的对象。</li>
@@ -403,7 +404,7 @@
 <li>本地方法栈中JNI（即一般说的Native方法）引用的对象</li>
 </ul>
 </li>
-<li><p>五种引用</p>
+<li><p>五种引用法</p>
 <img src="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608150800.png" style="width:60%">
 
 <ul>
@@ -852,6 +853,26 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Echarts</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hibernate</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">MyBatisPlus</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SSH</a>
               </li>
             
             <div class="clearfix"></div>
