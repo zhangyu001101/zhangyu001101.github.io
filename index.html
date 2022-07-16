@@ -189,6 +189,181 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-SpringBoot的学习三" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/07/16/SpringBoot%E7%9A%84%E5%AD%A6%E4%B9%A0%E4%B8%89/">SpringBoot的学习三</a>
+    </h1>
+  
+
+        
+        <a href="/2022/07/16/SpringBoot%E7%9A%84%E5%AD%A6%E4%B9%A0%E4%B8%89/" class="archive-article-date">
+  	<time datetime="2022-07-16T02:52:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一、内容介绍"><a href="#一、内容介绍" class="headerlink" title="一、内容介绍"></a>一、内容介绍</h1><p>经过对SpringBoot和MyBatis的浅学，本章节主要是介绍SpringBoot+MyBatisPlus+Vue的项目实战遇到的问题以及解决办法。</p>
+<p>本项目主要是饭店+小程序模式开发的。
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/07/16/SpringBoot%E7%9A%84%E5%AD%A6%E4%B9%A0%E4%B8%89/">查看全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-FastDFS的学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/07/14/FastDFS%E7%9A%84%E5%AD%A6%E4%B9%A0/">FastDFS的学习</a>
+    </h1>
+  
+
+        
+        <a href="/2022/07/14/FastDFS%E7%9A%84%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
+  	<time datetime="2022-07-14T03:56:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h1><p><strong>DFS：</strong>分布式文件系统（Distributed file system），是一个网络服务器组件，它能够使得在网络上查询和管理数据更容易。分布式文件系统是将分布于不同电脑上的文件组合为单一的名称空间，并使得在网络上建立一个单一的、层次化多重文件服务器和服务器共享的工作更为方便的途径。</p>
+<p><strong>分类：</strong>TFES GFS HDFS FastDFS OSS</p>
+<p><strong>FastDFS：</strong>是一款类似Google FS的开源分布式文件系统，是纯C语言开发的。FastDFS是一个开源的轻量级分布式文件系统，它对文件进行管理，功能包括：文件存储、文件同步、文件访问（文件上传、文件下载）等，解决了大容量存储和负载均衡的问题。特别适合以文件为载体的在线服务，如相册网站、视频网站等等。FastDFS为互联网量身定制，充分考虑了冗余备份、负载均衡、线性扩容等机制，并注重高可用、高性能等指标，使用FastDFS很容易搭建一套高性能的文件服务器集群提供文件上传、下载等服务。</p>
+<p><strong>FastDFS两个组件：</strong></p>
+<ul>
+<li><p>跟踪器（tracker），类似于包工头</p>
+<p>主要任务：调度工作，再访问上起负载均衡的作用</p>
+<p>作用：</p>
+<ul>
+<li>接收客户端的请求</li>
+<li>分配任务给storage</li>
+<li>管理和维护系统的元数据（记录文件以及存储位置的属性信息）</li>
+</ul>
+</li>
+<li><p>存储节点（storage），类似于建筑工人</p>
+<p>主要任务：负责文件的上传和下载和管理</p>
+<ul>
+<li>处理客户端请求</li>
+<li>文件的存储、维护、管理</li>
+</ul>
+</li>
+</ul>
+<h1 id="二、安装FastDFS（只在主机安装）"><a href="#二、安装FastDFS（只在主机安装）" class="headerlink" title="二、安装FastDFS（只在主机安装）"></a>二、安装FastDFS（只在主机安装）</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">This is FastDFS client test program v5.11</span><br><span class="line"></span><br><span class="line">Copyright (C) 2008, Happy Fish &#x2F; YuQing</span><br><span class="line"></span><br><span class="line">FastDFS may be copied only under the terms of the GNU General</span><br><span class="line">Public License V3, which may be found in the FastDFS source kit.</span><br><span class="line">Please visit the FastDFS Home Page http:&#x2F;&#x2F;www.csource.org&#x2F; </span><br><span class="line">for more detail.</span><br><span class="line"></span><br><span class="line">[2022-07-14 03:12:00] DEBUG - base_path&#x3D;&#x2F;opt&#x2F;SoftWare&#x2F;FastDFS&#x2F;fastdfs-5.11&#x2F;client, connect_timeout&#x3D;30, network_timeout&#x3D;60, tracker_server_count&#x3D;1, anti_steal_token&#x3D;0, anti_steal_secret_key length&#x3D;0, use_connection_pool&#x3D;0, g_connection_pool_max_idle_time&#x3D;3600s, use_storage_id&#x3D;0, storage server id count: 0</span><br><span class="line"></span><br><span class="line">tracker_query_storage_store_list_without_group: </span><br><span class="line">	server 1. group_name&#x3D;, ip_addr&#x3D;192.168.100.251, port&#x3D;23000</span><br><span class="line"></span><br><span class="line">group_name&#x3D;group1, ip_addr&#x3D;192.168.100.251, port&#x3D;23000</span><br><span class="line">storage_upload_by_filename</span><br><span class="line">group_name&#x3D;group1, remote_filename&#x3D;M00&#x2F;00&#x2F;00&#x2F;wKhk-2LPGQCAa62AAAAABuCt0tY628.txt</span><br><span class="line">source ip address: 192.168.100.251</span><br><span class="line">file timestamp&#x3D;2022-07-14 03:12:00</span><br><span class="line">file size&#x3D;6</span><br><span class="line">file crc32&#x3D;3769488086</span><br><span class="line">example file url: http:&#x2F;&#x2F;192.168.100.251&#x2F;group1&#x2F;M00&#x2F;00&#x2F;00&#x2F;wKhk-2LPGQCAa62AAAAABuCt0tY628.txt</span><br><span class="line">storage_upload_slave_by_filename</span><br><span class="line">group_name&#x3D;group1, remote_filename&#x3D;M00&#x2F;00&#x2F;00&#x2F;wKhk-2LPGQCAa62AAAAABuCt0tY628_big.txt</span><br><span class="line">source ip address: 192.168.100.251</span><br><span class="line">file timestamp&#x3D;2022-07-14 03:12:00</span><br><span class="line">file size&#x3D;6</span><br><span class="line">file crc32&#x3D;3769488086</span><br><span class="line">example file url: http:&#x2F;&#x2F;192.168.100.251&#x2F;group1&#x2F;M00&#x2F;00&#x2F;00&#x2F;wKhk-2LPGQCAa62AAAAABuCt0tY628_big.txt</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">FastDFS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/07/14/FastDFS%E7%9A%84%E5%AD%A6%E4%B9%A0/">查看全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Nginx的学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -767,17 +942,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="一、内容介绍"><a href="#一、内容介绍" class="headerlink" title="一、内容介绍"></a>一、内容介绍</h1><p>经过对SpringBoot和MyBatis的浅学，本章节主要是介绍SpringBoot+MyBatisPlus的项目实战遇到的问题以及解决办法。</p>
-<h1 id="二、前期"><a href="#二、前期" class="headerlink" title="二、前期"></a>二、前期</h1><h3 id="1、实体类的设计"><a href="#1、实体类的设计" class="headerlink" title="1、实体类的设计"></a>1、实体类的设计</h3><h5 id="R类"><a href="#R类" class="headerlink" title="R类"></a>R类</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.edu.zut.entity.common;</span><br><span class="line">...</span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">R</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Integer code; <span class="comment">//编码：1成功，0和其它数字为失败</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String msg; <span class="comment">//错误信息</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> T data; <span class="comment">//数据</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Map map = <span class="keyword">new</span> HashMap(); <span class="comment">//动态数据</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">R&lt;T&gt; <span class="title">success</span><span class="params">(T object)</span> </span>&#123;</span><br><span class="line">        R&lt;T&gt; r = <span class="keyword">new</span> R&lt;T&gt;();</span><br><span class="line">        r.data = object;</span><br><span class="line">        r.code = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> r;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">R&lt;T&gt; <span class="title">error</span><span class="params">(String msg)</span> </span>&#123;</span><br><span class="line">        R r = <span class="keyword">new</span> R();</span><br><span class="line">        r.msg = msg;</span><br><span class="line">        r.code = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> r;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> R&lt;T&gt; <span class="title">add</span><span class="params">(String key, Object value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.map.put(key, value);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="Employee类–员工类"><a href="#Employee类–员工类" class="headerlink" title="Employee类–员工类"></a>Employee类–员工类</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.edu.zut.entity;</span><br><span class="line">...</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 员工实体类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String phone;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String sex;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String idNumber; <span class="comment">//身份证</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Integer status;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@TableField(fill = FieldFill.INSERT)</span><span class="comment">//插入时填充字段</span></span><br><span class="line">    <span class="keyword">private</span> LocalDateTime createTime;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@TableField(fill = FieldFill.INSERT_UPDATE)</span><span class="comment">//插入和更新时填充字段</span></span><br><span class="line">    <span class="keyword">private</span> LocalDateTime updateTime;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@TableField(fill = FieldFill.INSERT)</span></span><br><span class="line">    <span class="keyword">private</span> Long createUser;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@TableField(fill = FieldFill.INSERT_UPDATE)</span></span><br><span class="line">    <span class="keyword">private</span> Long updateUser;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="2、MP的基础类"><a href="#2、MP的基础类" class="headerlink" title="2、MP的基础类"></a>2、MP的基础类</h3><h5 id="BaseMapper-lt-Entity-gt"><a href="#BaseMapper-lt-Entity-gt" class="headerlink" title="BaseMapper&lt;Entity&gt;"></a>BaseMapper&lt;Entity&gt;</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.core.mapper.BaseMapper;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">EmployeeMapper</span> <span class="keyword">extends</span> <span class="title">BaseMapper</span>&lt;<span class="title">Employee</span>&gt; </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h5 id="IService-lt-Entity-gt"><a href="#IService-lt-Entity-gt" class="headerlink" title="IService&lt;Entity&gt;"></a>IService&lt;Entity&gt;</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">EmployeeService</span> <span class="keyword">extends</span> <span class="title">IService</span>&lt;<span class="title">Employee</span>&gt; </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="ServiceImpl-lt-Mapper-Entity-gt"><a href="#ServiceImpl-lt-Mapper-Entity-gt" class="headerlink" title="ServiceImpl&lt;Mapper,Entity&gt;"></a>ServiceImpl&lt;Mapper,Entity&gt;</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EmployeeServiceImpl</span> <span class="keyword">extends</span> <span class="title">ServiceImpl</span>&lt;<span class="title">EmployeeMapper</span>, <span class="title">Employee</span>&gt; <span class="keyword">implements</span> <span class="title">EmployeeService</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="3、启动类扫描Mapper"><a href="#3、启动类扫描Mapper" class="headerlink" title="3、启动类扫描Mapper"></a>3、启动类扫描Mapper</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@MapperScan(&quot;com.edu.zut.mapper&quot;)</span>  <span class="comment">//这样Mapper层可以不用注解</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(Application.class,args);</span><br><span class="line">        System.out.println(<span class="string">&quot;SpringBoot项目已经启动...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>4、</p>
-<h1 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h1><p>问题一：JS导致丢失精度</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qhl0930/article/details/122452650">Blog链接</a></p>
-
+        <p><strong>SpringBoot提供了一种快速开发Spring项目的方式，而不是增强Spring的功能</strong></p>
+        
       
 
       
@@ -794,7 +960,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">项目</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">MyBatisPlus</a>
         		</li>
       		
 		</ul>
@@ -1401,159 +1567,6 @@
 
 
   
-    <article id="post-Docker的学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/06/23/Docker%E7%9A%84%E5%AD%A6%E4%B9%A0/">Docker的学习</a>
-    </h1>
-  
-
-        
-        <a href="/2022/06/23/Docker%E7%9A%84%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2022-06-23T13:16:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h1><p><a target="_blank" rel="noopener" href="https://docker.easydoc.net/doc/81170005/cCewZWoN/lTKfePfP">学习文档链接简易版</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV11L411g7U1?spm_id_from=333.337.search-card.all.click&vd_source=231f947ca1bfb0c73e525e7e7c582f48">学习视频链接</a></p>
-<p><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/#server">服务器Docker版本下载</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.docker.com/products/docker-desktop/">桌面版Docker下载</a></p>
-<p>理解：Docker是个简易虚拟机</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/06/23/Docker%E7%9A%84%E5%AD%A6%E4%B9%A0/">查看全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Echarts的学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/06/17/Echarts%E7%9A%84%E5%AD%A6%E4%B9%A0/">Echarts的学习</a>
-    </h1>
-  
-
-        
-        <a href="/2022/06/17/Echarts%E7%9A%84%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2022-06-17T07:51:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#darkMode">官方Document</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/apache/echarts/releases">下载链接</a></p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Echarts</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/06/17/Echarts%E7%9A%84%E5%AD%A6%E4%B9%A0/">查看全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1849,6 +1862,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">张炎峰老师推荐</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">FastDFS</a>
               </li>
             
             <div class="clearfix"></div>
