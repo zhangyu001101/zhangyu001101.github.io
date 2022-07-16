@@ -306,7 +306,579 @@
 </ul>
 </li>
 </ul>
-<h1 id="二、安装FastDFS（只在主机安装）"><a href="#二、安装FastDFS（只在主机安装）" class="headerlink" title="二、安装FastDFS（只在主机安装）"></a>二、安装FastDFS（只在主机安装）</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">This is FastDFS client test program v5.11</span><br><span class="line"></span><br><span class="line">Copyright (C) 2008, Happy Fish &#x2F; YuQing</span><br><span class="line"></span><br><span class="line">FastDFS may be copied only under the terms of the GNU General</span><br><span class="line">Public License V3, which may be found in the FastDFS source kit.</span><br><span class="line">Please visit the FastDFS Home Page http:&#x2F;&#x2F;www.csource.org&#x2F; </span><br><span class="line">for more detail.</span><br><span class="line"></span><br><span class="line">[2022-07-14 03:12:00] DEBUG - base_path&#x3D;&#x2F;opt&#x2F;SoftWare&#x2F;FastDFS&#x2F;fastdfs-5.11&#x2F;client, connect_timeout&#x3D;30, network_timeout&#x3D;60, tracker_server_count&#x3D;1, anti_steal_token&#x3D;0, anti_steal_secret_key length&#x3D;0, use_connection_pool&#x3D;0, g_connection_pool_max_idle_time&#x3D;3600s, use_storage_id&#x3D;0, storage server id count: 0</span><br><span class="line"></span><br><span class="line">tracker_query_storage_store_list_without_group: </span><br><span class="line">	server 1. group_name&#x3D;, ip_addr&#x3D;192.168.100.251, port&#x3D;23000</span><br><span class="line"></span><br><span class="line">group_name&#x3D;group1, ip_addr&#x3D;192.168.100.251, port&#x3D;23000</span><br><span class="line">storage_upload_by_filename</span><br><span class="line">group_name&#x3D;group1, remote_filename&#x3D;M00&#x2F;00&#x2F;00&#x2F;wKhk-2LPGQCAa62AAAAABuCt0tY628.txt</span><br><span class="line">source ip address: 192.168.100.251</span><br><span class="line">file timestamp&#x3D;2022-07-14 03:12:00</span><br><span class="line">file size&#x3D;6</span><br><span class="line">file crc32&#x3D;3769488086</span><br><span class="line">example file url: http:&#x2F;&#x2F;192.168.100.251&#x2F;group1&#x2F;M00&#x2F;00&#x2F;00&#x2F;wKhk-2LPGQCAa62AAAAABuCt0tY628.txt</span><br><span class="line">storage_upload_slave_by_filename</span><br><span class="line">group_name&#x3D;group1, remote_filename&#x3D;M00&#x2F;00&#x2F;00&#x2F;wKhk-2LPGQCAa62AAAAABuCt0tY628_big.txt</span><br><span class="line">source ip address: 192.168.100.251</span><br><span class="line">file timestamp&#x3D;2022-07-14 03:12:00</span><br><span class="line">file size&#x3D;6</span><br><span class="line">file crc32&#x3D;3769488086</span><br><span class="line">example file url: http:&#x2F;&#x2F;192.168.100.251&#x2F;group1&#x2F;M00&#x2F;00&#x2F;00&#x2F;wKhk-2LPGQCAa62AAAAABuCt0tY628_big.txt</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="二、安装FastDFS（只在主机安装）"><a href="#二、安装FastDFS（只在主机安装）" class="headerlink" title="二、安装FastDFS（只在主机安装）"></a>二、安装FastDFS（只在主机安装）</h1><ul>
+<li><p>安装依赖：gcc libevent libevent-devel</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install gcc libevent libevent-devel -y</span><br></pre></td></tr></table></figure></li>
+<li><p>安装libcomment</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y wget</span><br></pre></td></tr></table></figure></li>
+<li><p>在线下载libcomment的安装包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/happyfish100/libfastcommon/archive/V1.0.38.tar.gz</span><br></pre></td></tr></table></figure></li>
+<li><p>解压缩到当前文件夹下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf V1.0.38.tar.gz</span><br></pre></td></tr></table></figure></li>
+<li><p>进入libfastcommon-1.0.38文件夹中执行make.sh文件进行编译，执行make.sh install文件进行安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@java34master libfastcommon-1.0.38]# pwd /usr/soft/libfastcommon-1.0.38 </span><br><span class="line">[root@java34master libfastcommon-1.0.38]# ./make.sh</span><br><span class="line">[root@java34master libfastcommon-1.0.38]# ./make.sh install</span><br></pre></td></tr></table></figure></li>
+<li><p>安装FastDFS</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">[root@java34master soft]# wget https://github.com/happyfish100/fastdfs/archive/V5.11.tar.gz</span><br><span class="line">[root@java34master fastdfs-5.11]# ./make.sh  </span><br><span class="line">[root@java34master fastdfs-5.11]# ./make.sh install </span><br><span class="line">[root@java34master fastdfs-5.11]# cd /usr/bin</span><br><span class="line">fdfs_test</span><br><span class="line">fdfs_upload..</span><br><span class="line">...</span><br><span class="line">---------拷贝/usr/soft/fastdfs-xxx/conf下的http.conf和mime.types到/etc/fdfs下-------------</span><br><span class="line">[root@java34master conf]# cp /usr/soft/fastdfs-5.11/conf/http.conf /etc/fdfs/ </span><br><span class="line">[root@java34master conf]# cp /usr/soft/fastdfs-5.11/conf/mime.types /etc/fdfs/</span><br><span class="line">---------把/etc/fdfs下的 storage.conf.sample和tracker.conf.sample 文件名后面的simple删除------</span><br><span class="line">[root@java34master fdfs]# mv /etc/fdfs/storage.conf.sample /etc/fdfs/storage.conf </span><br><span class="line">[root@java34master fdfs]# mv /etc/fdfs/tracker.conf.sample /etc/fdfs/tracker.conf</span><br><span class="line">---------更改 tracker.conf中的base_path并记忆其端口------------</span><br><span class="line">[root@java34master fdfs]# vim /etc/fdfs/tracker.conf </span><br><span class="line">... </span><br><span class="line"><span class="meta">#</span><span class="bash"> the tracker server port</span> </span><br><span class="line"><span class="meta">#</span><span class="bash"> 记住tracker的端口为22122</span> </span><br><span class="line">port=22122 </span><br><span class="line"><span class="meta">#</span><span class="bash"> connect timeout <span class="keyword">in</span> seconds</span> </span><br><span class="line"><span class="meta">#</span><span class="bash"> default value is 30s</span> </span><br><span class="line">connect_timeout=30</span><br><span class="line"><span class="meta">#</span><span class="bash"> network timeout <span class="keyword">in</span> seconds</span> </span><br><span class="line"><span class="meta">#</span><span class="bash"> default value is 30s</span> </span><br><span class="line">network_timeout=60 </span><br><span class="line"><span class="meta">#</span><span class="bash"> the base path to store data and <span class="built_in">log</span> files</span> </span><br><span class="line"><span class="meta">#</span><span class="bash"> 记录元数据存储位置</span> </span><br><span class="line">base_path=/usr/soft/fastdfs-5.11-file/tracker ...</span><br><span class="line">------------更改 storage.conf中的base_path,store_path0,tracker_server 并记忆其端口----------</span><br><span class="line">[root@java34master fdfs]# vim /etc/fdfs/storage.conf</span><br><span class="line">[root@java34master fdfs]# cat /etc/fdfs/storage.conf</span><br><span class="line">... </span><br><span class="line"><span class="meta">#</span><span class="bash">记住storage的端口</span> </span><br><span class="line">port=23000 </span><br><span class="line">... </span><br><span class="line"><span class="meta">#</span><span class="bash"> 更改基础路径</span> </span><br><span class="line">base_path=/usr/soft/fastdfs-5.11-file/storage ... </span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置文件存储路径</span> </span><br><span class="line">store_path0=/usr/soft/fastdfs-5.11-file/storage/files </span><br><span class="line"><span class="meta">#</span><span class="bash">store_path1=/home/yuqing/fastdfs2 ...</span> </span><br><span class="line"><span class="meta">#</span><span class="bash">指定tracker的位置</span> </span><br><span class="line">tracker_server=192.168.254.128:22122</span><br><span class="line">------------创建刚才配置的两个文件夹---------------</span><br><span class="line">[root@java34master tracker]# mkdir -p /usr/soft/fastdfs-5.11-file/tracker</span><br><span class="line">[root@java34master tracker]# mkdir -p /usr/soft/fastdfs-5.11-file/storage/files</span><br><span class="line">------------先启动tracker：：：执行/usr/bin/fdfs_trackerd （/usr/bin已经设置了PATH环境变量）------</span><br><span class="line">[root@java34master bin]# fdfsll_trackerd</span><br><span class="line"><span class="meta">#</span><span class="bash">输入命令 获取命令的提示信息</span></span><br><span class="line">Usage: fdfs_trackerd &lt;config_file&gt; [start | stop | restart] </span><br><span class="line">[root@java34master bin]# fdfs_trackerd /etc/fdfs/tracker.conf start</span><br><span class="line">------------再启动storage：：：执行/usr/bin/fdfs_storaged-------</span><br><span class="line">[root@java34master bin]# fdfs_storaged </span><br><span class="line">Usage: fdfs_storaged &lt;config_file&gt; [start | stop | restart] </span><br><span class="line">[root@java34master bin]# fdfs_storaged /etc/fdfs/storage.conf start</span><br><span class="line">------------查看进程---------------</span><br><span class="line">[root@java34master bin]# ps -ef | grep fdfs </span><br><span class="line">root 5568 1 0 15:43 ? 00:00:00 fdfs_trackerd </span><br><span class="line">/etc/fdfs/tracker.conf start root 5585 1 21 15:44 ? 00:00:04 fdfs_storaged </span><br><span class="line">/etc/fdfs/storage.conf start root 5600 2390 0 15:44 pts/2 00:00:00 grep --color=auto fdfs</span><br></pre></td></tr></table></figure></li>
+<li><p>执行fdfs_test</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">------------把/etc/fdfs/client.conf.simple的.simple删除---------</span><br><span class="line">[root@java34master fdfs]# mv /etc/fdfs/client.conf.sample /etc/fdfs/client.conf</span><br><span class="line">------------进入client.conf：：修改base_path和tracker_server---------</span><br><span class="line">[root@java34master fdfs]# vim /etc/fdfs/client.conf </span><br><span class="line">[root@java34master fdfs]# cat /etc/fdfs/client.conf </span><br><span class="line">.... # 设置基础目录 </span><br><span class="line">base_path=/usr/soft/fastdfs-5.11-file/client </span><br><span class="line"><span class="meta">#</span><span class="bash"> tracker_server can ocur more than once, and tracker_server format is</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置tracker的位置 tracker_server=192.168.254.128:22122</span></span><br><span class="line">-------------创建base_path文件夹------------------</span><br><span class="line">[root@java34master fdfs]# mkdir -p /usr/soft/fastdfs-5.11-file/client</span><br><span class="line">-------------创建一个文件--------------</span><br><span class="line">[root@java34master ~]# pwd /root</span><br><span class="line">[root@java34master ~]# echo 1+1=2 &gt; 11.txt</span><br><span class="line">-------------保证fastdfs的tracker和storage开启状态---------------</span><br><span class="line">[root@java34master ~]# ps -ef | grep fdfs</span><br><span class="line">root 5568 1 0 15:43 ? 00:00:00 fdfs_trackerd </span><br><span class="line">/etc/fdfs/tracker.conf start root 5585 1 0 15:44 ? 00:00:04 fdfs_storaged </span><br><span class="line">/etc/fdfs/storage.conf start root 6608 2390 0 16:57 pts/2 00:00:00 grep --color=auto fdfs</span><br><span class="line">-------------执行/usr/bin下的fdfs_test命令 实现文件上传-----------</span><br><span class="line">[root@java34master ~]# fdfs_test #执行命令 获取命令的参数提示 </span><br><span class="line">Usage: fdfs_test &lt;config_file&gt; &lt;operation&gt; operation: upload, download, getmeta, setmeta, delete and query_servers </span><br><span class="line">[root@java34master ~]# fdfs_test /etc/fdfs/client.conf upload /root/11.txt #上 传文件</span><br><span class="line">...</span><br><span class="line">[2022-07-14 03:12:00] DEBUG - base_path=/opt/SoftWare/FastDFS/fastdfs-5.11/client, connect_timeout=30, network_timeout=60, tracker_server_count=1, anti_steal_token=0, anti_steal_secret_key length=0, use_connection_pool=0, g_connection_pool_max_idle_time=3600s, use_storage_id=0, storage server id count: 0</span><br><span class="line"></span><br><span class="line">tracker_query_storage_store_list_without_group: </span><br><span class="line">	server 1. group_name=, ip_addr=192.168.100.251, port=23000</span><br><span class="line"></span><br><span class="line">group_name=group1, ip_addr=192.168.100.251, port=23000</span><br><span class="line">storage_upload_by_filename</span><br><span class="line">group_name=group1, remote_filename=M00/00/00/wKhk-2LPGQCAa62AAAAABuCt0tY628.txt</span><br><span class="line">source ip address: 192.168.100.251</span><br><span class="line">file timestamp=2022-07-14 03:12:00</span><br><span class="line">file size=6</span><br><span class="line">file crc32=3769488086</span><br><span class="line">example file url: http://192.168.100.251/group1/M00/00/00/wKhk-2LPGQCAa62AAAAABuCt0tY628.txt</span><br><span class="line">storage_upload_slave_by_filename</span><br><span class="line">group_name=group1, remote_filename=M00/00/00/wKhk-2LPGQCAa62AAAAABuCt0tY628_big.txt</span><br><span class="line">source ip address: 192.168.100.251</span><br><span class="line">file timestamp=2022-07-14 03:12:00</span><br><span class="line">file size=6</span><br><span class="line">file crc32=3769488086</span><br><span class="line">example file url: http://192.168.100.251/group1/M00/00/00/wKhk-2LPGQCAa62AAAAABuCt0tY628_big.txt</span><br><span class="line"><span class="meta">#</span><span class="bash">分析以上上传结果</span></span><br><span class="line">分析： 目的文件的位置：M00/00/00/wKj-hGDB1GCACiweAAAABuCt0tY922.txt </span><br><span class="line">进入目的文件夹： [root@java34master 00]# pwd /usr/soft/fastdfs-5.11-file/storage/files/data/00/00 [root@java34master 00]# ll 总用量 16 #备份文件 -rw-r--r-- 1 root root 6 6月 10 16:59 wKj-hGDB1GCACiweAAAABuCt0tY922_big.txt #备份文件的元数据:</span><br><span class="line">执行/usr/bin下的fdfs_test命令 实现文件下载</span><br><span class="line">执行/usr/bin下的fdfs_test命令 实现文件删除</span><br><span class="line">-rw-r--r-- 1 root root 49 6月 10 16:59 wKj-hGDB1GCACiweAAAABuCt0tY922_big.txt-m #目的文件 -rw-r--r-- 1 root root 6 6月 10 16:59 wKj-hGDB1GCACiweAAAABuCt0tY922.txt #目的文件的元数据 -rw-r--r-- 1 root root 49 6月 10 16:59 wKj-hGDB1GCACiweAAAABuCt0tY922.txt-m</span><br><span class="line">-------------------执行/usr/bin下的fdfs_test命令 实现文件下载---------------------</span><br><span class="line">[root@java34master ~]# fdfs_test /etc/fdfs/client.conf download group1 M00/00/00/wKj-hGDB1GCACiweAAAABuCt0tY922.txt </span><br><span class="line">命令中的group1 是当前storage的组名：：当storage多</span><br><span class="line">------------------执行/usr/bin下的fdfs_test命令 实现文件删除-----------------</span><br><span class="line">[root@java34master ~]# fdfs_test /etc/fdfs/client.conf delete group1 M00/00/00/wKj-hGDB1GCACiweAAAABuCt0tY922.txt</span><br></pre></td></tr></table></figure>
+<h1 id="三、部署到Nginx"><a href="#三、部署到Nginx" class="headerlink" title="三、部署到Nginx"></a>三、部署到Nginx</h1><p><strong>1</strong> <strong>卸载yum安装的nginx</strong></p>
+<p>保存 nginx的配置 /etc/nginx/conf.d/cloud34.conf保存下来</p>
+<p>关闭服务</p>
+<p>卸载nginx</p>
+<p>yum清理nginx</p>
+<p>删除nginx残留的文件</p>
+<p>重启</p>
+<p>[root@java34master conf.d]# systemctl status nginx #查看nginx的状态 </p>
+<p>● nginx.service - nginx - high performance web server </p>
+<p>Loaded: loaded (/usr/lib/systemd/system/nginx.service; disabled; vendor </p>
+<p>preset: disabled) </p>
+<p>Active: inactive (dead) </p>
+<p>Docs: <a target="_blank" rel="noopener" href="http://nginx.org/en/docs/">http://nginx.org/en/docs/</a> </p>
+<p>[root@java34master conf.d]# systemctl stop nginx #关闭nginx服务 </p>
+<p>[root@java34master conf.d]# chkconfig nginx off #取消nginx开机启动 </p>
+<p>注意：正在将请求转发到“systemctl disable nginx.service”。 </p>
+<p>[root@java34master conf.d]# whereis nginx #查找nginx相关的安装位置 </p>
+<p>nginx: /usr/sbin/nginx /usr/lib64/nginx /etc/nginx /usr/share/nginx </p>
+<p>/usr/share/man/man8/nginx.8.gz </p>
+<p>[root@java34master conf.d]# rm -rf /usr/sbin/nginx #逐个删除 </p>
+<p>[root@java34master conf.d]# rm -rf /usr/lib64/nginx </p>
+<p>[root@java34master conf.d]# rm -rf /etc/nginx </p>
+<p>[root@java34master conf.d]# rm -rf /usr/share/nginx </p>
+<p>[root@java34master conf.d]# rm -rf /usr/share/man/man8/nginx.8.gz </p>
+<p>nginx:[root@java34master /]# yum remove nginx -y </p>
+<p>[root@java34master /]# find / -name “nginx” # 从跟目录下找 文件名包含nginx的所有文件 </p>
+<p>/var/log/nginx </p>
+<p>/var/cache/nginx </p>
+<p>[root@java34master /]# rm -rf /var/log/nginx #逐个删除 </p>
+<p>[root@java34master /]# rm -rf /var/cache/nginx </p>
+<p>reboot<strong>2</strong> <strong>通过压缩包安装**</strong>nginx**</p>
+<p>在nginx官网下载压缩包</p>
+<p>上传到/usr/soft下 </p>
+<p>*</p>
+<p>解压缩[root@java34master soft]# pwd </p>
+<p>/usr/soft </p>
+<p>[root@java34master soft]# tar -zxvf nginx-1.14.2.tar.gz </p>
+<p>… </p>
+<p>[root@java34master soft]# ll </p>
+<p>… </p>
+<p>drwxr-xr-x 8 1001 1001 158 12月 4 2018 nginx-1.14.2 </p>
+<p>-rw-r–r– 1 root root 1015384 6月 15 10:54 nginx-1.14.2.tar.gz </p>
+<p>…</p>
+<p>在线下载：fdfs的nginx插件</p>
+<p>wget <a target="_blank" rel="noopener" href="https://github.com/happyfish100/fastdfs-nginx-">https://github.com/happyfish100/fastdfs-nginx-</a> </p>
+<p>module/archive/5e5f3566bbfa57418b5506aaefbe107a42c9fcb1.zip</p>
+<p>解压缩插件</p>
+<p>[root@java34master soft]# yum install zip unzip -y </p>
+<p>[root@java34master soft]# unzip 5e5f3566bbfa57418b5506aaefbe107a42c9fcb1.zip </p>
+<p>[root@java34master soft]# ll </p>
+<p>总用量 196136 </p>
+<p>-rw-r–r– 1 root root 21051 6月 15 10:58 </p>
+<p>5e5f3566bbfa57418b5506aaefbe107a42c9fcb1.zip </p>
+<p>… </p>
+<p>drwxr-xr-x 3 root root 47 4月 14 2017 fastdfs-nginx-module- </p>
+<p>5e5f3566bbfa57418b5506aaefbe107a42c9fcb1 </p>
+<p>…</p>
+<p>重命名</p>
+<p>[root@java34master soft]# mv fastdfs-nginx-module- </p>
+<p>5e5f3566bbfa57418b5506aaefbe107a42c9fcb1 fastdfs-nginx-module </p>
+<p>[root@java34master soft]# ll </p>
+<p>… </p>
+<p>drwxr-xr-x 3 root root 47 4月 14 2017 fastdfs-nginx-module </p>
+<p>…</p>
+<p>测试安装环境</p>
+<p>[root@java34master soft]# cd /usr/soft/nginx-1.14.2 #进入nginx的目录 </p>
+<p>[root@java34master nginx-1.14.2]# ./configure –prefix=/usr/soft/nginx_fdfs – </p>
+<p>add-module=/usr/soft/fastdfs-nginx-module/src </p>
+<p># 指定nginx的安装位置为/usr/soft/nginx_fdfs </p>
+<p># 指定插件位置为/usr/soft/fastdfs-nginx-module/src</p>
+<p>编译</p>
+<p>[root@java34master nginx-1.14.2]# mkdir /usr/soft/nginx_fdfs #创建nginx的安装目录 </p>
+<p>[root@java34master nginx-1.14.2]# make #必须在nginx的目录下执行</p>
+<p>编译报错处理方式#如果编译报错： </p>
+<p>[root@java37master nginx-1.14.2]# make </p>
+<p>make: *** 没有规则可以创建“default”需要的目标“build”。 停止。 </p>
+<p>#执行一下命令：安装nginx的依赖 </p>
+<p>[root@java37master nginx-1.14.2]# yum -y install gcc openssl spenssl-devel pcre- </p>
+<p>devel zlib zlib-devel </p>
+<p>[root@java37master nginx-1.14.2]# yum -y install zlib zlib-devel openssl openssl- </p>
+<p>devel pcre pcre-devel gcc </p>
+<p>#再次测试环境 </p>
+<p>[root@java37master nginx-1.14.2]# ./configure –prefix=/usr/soft/nginx_fdfs – </p>
+<p>add-module=/usr/soft/fastdfs-nginx-module/src </p>
+<p>#继续编译 </p>
+<p>[root@java34master nginx-1.14.2]# make #必须在nginx的目录下执行</p>
+<p>安装</p>
+<p>[root@java34master nginx-1.14.2]# make install #必须在nginx的目录下执行</p>
+<p>查看版本</p>
+<p>[root@java34master nginx-1.14.2]# /usr/soft/nginx-1.14.2/objs/nginx -v </p>
+<p>nginx version: nginx/1.14.2</p>
+<p>创建配置文件1：/etc/fdfs/mod_fastdfs.conf</p>
+<p>[root@java34master src]# cp /usr/soft/fastdfs-nginx-module/src/mod_fastdfs.conf </p>
+<p>/etc/fdfs #复制fastdfs-nginx-module/src/mod_fastdfs.conf 到 /etc/fdfs下 </p>
+<p>[root@java34master src]# vim /etc/fdfs/mod_fastdfs.conf #:set number 可以显示行 </p>
+<p>数</p>
+<p># 40行指定tracker的位置 </p>
+<p>tracker_server=192.168.254.128:22122 </p>
+<p># 53行 指定文件上传下载时 需要指定group </p>
+<p>url_have_group_name = true </p>
+<p>#60行指定storage存放文件的位置 </p>
+<p>store_path0=/usr/soft/fastdfs-5.11-file/storage/files</p>
+<p>修改配置文件2：/usr/soft/nginx_fdfs/conf/nginx.conf</p>
+<p>[root@java34master conf]# pwd </p>
+<p>/usr/soft/nginx_fdfs/conf </p>
+<p>[root@java34master conf]# vim nginx.conf </p>
+<p>user root; #指定用户 #第一行 </p>
+<p>… </p>
+<p>http {</p>
+<p>… </p>
+<p>server { </p>
+<p>… </p>
+<p>#添加fdfs的配置 </p>
+<p>location /group1/M00 { </p>
+<p>root /usr/soft/fastdfs-5.11-file/storage/files/data; </p>
+<p>ngx_fastdfs_module;}</p>
+<p># 如果请求的url目录中有/group1/M00 就把此目录转换为 </p>
+<p># /usr/soft/fastdfs-5.11-file/storage/files/data </p>
+<p>}</p>
+<p>… </p>
+<p>}</p>
+<p>开启nginx </p>
+<p>[root@java34master sbin]# pwd </p>
+<p>/usr/soft/nginx_fdfs/sbin </p>
+<p>[root@java34master sbin]# ./nginx #开启nginx </p>
+<p>[root@java34master sbin]# ps -ef | grep “nginx” #查看nginx相关进程 </p>
+<p>root 9118 1 0 11:48 ? 00:00:00 nginx: master process ./nginx </p>
+<p>nobody 9119 9118 0 11:48 ? 00:00:00 nginx: worker process </p>
+<p>root 9121 1215 0 11:49 pts/0 00:00:00 grep –color=auto nginx </p>
+<p>[root@java34master sbin]# ./nginx -s reload #重启nginx </p>
+<p>[root@java34master sbin]# ./nginx -s stop #关闭nginx</p>
+<p>开启fdfs的两个节点：tracker+storage</p>
+<p>[root@java26master sbin]# fdfs_trackerd /etc/fdfs/tracker.conf start #开启tracker </p>
+<p>[root@java26master sbin]# fdfs_storaged /etc/fdfs/storage.conf start #开启storage </p>
+<p>[root@java26master sbin]# ps -ef | grep fdfs #查看进程 </p>
+<p>root 4027 1 0 10:46 ? 00:00:05 fdfs_trackerd </p>
+<p>/etc/fdfs/tracker.conf start </p>
+<p>root 4046 1 0 10:51 ? 00:00:07 fdfs_storaged </p>
+<p>/etc/fdfs/storage.conf start </p>
+<p>root 8499 2154 0 17:53 pts/0 00:00:00 grep –color=auto fdfs</p>
+<p>测试文件上传 </p>
+<p>[root@java26master sbin] cd ~ #切换到跟目录 </p>
+<p>[root@java26master ~] echo 3+3=6 &gt; 3.txt #创建文件 </p>
+<p>[root@java26master ~]# fdfs_test /etc/fdfs/client.conf upload /root/3.txt #上传 </p>
+<p>文件</p>
+<p>… </p>
+<p>example file url: <a target="_blank" rel="noopener" href="http://192.168.2.128/group1/M00/00/00/wKgCgF-">http://192.168.2.128/group1/M00/00/00/wKgCgF-</a> </p>
+<p>IHJmAG6MMAAAACs7qhLU501.txt </p>
+<p>…</p>
+<p>浏览器直接访问：</p>
+<p><a target="_blank" rel="noopener" href="http://192.168.2.128/group1/M00/00/00/wKgCgF-IHJmAG6MMAAAACs7qhLU501.txt">http://192.168.2.128/group1/M00/00/00/wKgCgF-IHJmAG6MMAAAACs7qhLU501.txt</a></p>
+<p>修改1： 启动nginx时 最好指定配置文件[root@java34master sbin]# pwd </p>
+<p>/usr/soft/nginx_fdfs/sbin </p>
+<p>[root@java34master sbin]# ./nginx -c /usr/soft/nginx_fdfs/conf/nginx.conf -s </p>
+<p>reload</p>
+<p>修改2： /usr/soft/nginx_fdfs/conf/nginx.conf</p>
+<p>[root@java34master conf]# pwd </p>
+<p>/usr/soft/nginx_fdfs/conf </p>
+<p>[root@java34master conf]# vim nginx.conf </p>
+<p>user root; #指定用户 #第一行 </p>
+<p>… </p>
+<p>http {</p>
+<p>… </p>
+<p>server { </p>
+<p>… </p>
+<p>#添加fdfs的配置 </p>
+<p>location /group1/M00 { </p>
+<p>#root /usr/soft/fastdfs-5.11-file/storage/files/data; </p>
+<p>#不需要再指定具体目录 只需要通过ngx_fastdfs_module </p>
+<p># 此请求交给nginx_fdfs的插件取处理 </p>
+<p>#在插件的配置文件中指定了storage的存放文件的目录 </p>
+<p>ngx_fastdfs_module; </p>
+<p>}</p>
+<p># 如果请求的url目录中有/group1/M00 就把此目录转换为 </p>
+<p># /usr/soft/fastdfs-5.11-file/storage/files/data </p>
+<p>}</p>
+<p>… </p>
+<p>}</p>
+<p><strong>3</strong> <strong>通过**</strong>javaAPI**<strong>操作**</strong>fdfs**<strong>实现文件删除**</strong>/<strong><strong>下载</strong></strong>/**</p>
+<p><strong>修改</strong></p>
+<p>下载fdfs的客户端压缩包</p>
+<p>fastdfs-client-java-master.zip</p>
+<p>解压缩使用maven打包此项目</p>
+<p>查看jar 存放的位置</p>
+<p>在云盘项目中添加依赖</p>
+<!--引入fdfs的客户端--> 
+
+<dependency> 
+
+<p><groupId>org.csource</groupId> </p>
+<p><artifactId>fastdfs-client-java</artifactId> </p>
+<p><version>1.29-SNAPSHOT</version> </p>
+</dependency>
+
+<p>创建配置文件 指定tracker的位置创建fdfs的工具类</p>
+<p>package com.zhiyou100.util; </p>
+<p>import org.csource.fastdfs.*; </p>
+<p>import java.util.Arrays; </p>
+<p>public class FdfsUtil { </p>
+<p>static{</p>
+<p>ClientGlobal.init(“tracker.conf”); </p>
+<p>}</p>
+<p>public static void main(String[] args)throws Exception{ </p>
+<p>//upload(“d:/imgs/00.jpg”); </p>
+<p>download(“group1”,”M00/00/00/wKj-gGDIUMmAK7HjAAA9JxdpQHI14..jpg”,”d:/“); </p>
+<p>}</p>
+<p>//文件删除：返回0成功 返回其他失败 </p>
+<p>public static int delete(String groupName,String fileName)throws Exception{ </p>
+<p>//获取tracker的客户端 </p>
+<p>TrackerClient tc=new TrackerClient(); </p>
+<p>//获取tracker的服务器端 </p>
+<p>TrackerServer ts=tc.getTrackerServer(); </p>
+<p>//获取storage的客户端 </p>
+<p>StorageClient sc=new StorageClient(ts); </p>
+<p>//调用stroage客户端的方法 进行文件操作 </p>
+<p>//参数1：组名 </p>
+<p>//参数2：文件名： 如M00/00/00/wKgCgF-JA5uAGSfAAAA9JxdpQHI55..jpg </p>
+<p>int result=sc.delete_file(groupName,fileName); </p>
+<p>System.out.println(result); </p>
+<p>//关闭连接 </p>
+<p>sc.close(); </p>
+<p>return result; </p>
+<p>}</p>
+<p>//文件下载：返回0成功 返回其他失败 使用于java项目 </p>
+<p>public static int download(String groupName,String fileName,String </p>
+<p>muDiPath)throws Exception{ </p>
+<p>TrackerClient tc=new TrackerClient(); </p>
+<p>TrackerServer ts=tc.getTrackerServer(); </p>
+<p>StorageClient sc=new StorageClient(ts); </p>
+<p>//参数1：组名 </p>
+<p>//参数2：文件名： 如M00/00/00/wKgCgF-JA5uAGSfAAAA9JxdpQHI55..jpg </p>
+<p>//参数3： 目的文件的名字 后缀名需要和源文件一致 </p>
+<p>int result=sc.download_file(groupName,fileName,muDiPath+”/“+ </p>
+<p>(fileName.substring(fileName.lastIndexOf(“/“)))); </p>
+<p>System.out.println(result); </p>
+<p>sc.close(); </p>
+<p>return result; </p>
+<p>}//文件下载：返回字节数组 适用于web项目 </p>
+<p>public static byte[] download(String groupName,String fileName)throws </p>
+<p>Exception{</p>
+<p>TrackerClient tc=new TrackerClient(); </p>
+<p>TrackerServer ts=tc.getTrackerServer(); </p>
+<p>StorageClient sc=new StorageClient(ts); </p>
+<p>//参数1：组名 </p>
+<p>//参数2：文件名： 如M00/00/00/wKgCgF-JA5uAGSfAAAA9JxdpQHI55..jpg </p>
+<p>byte[] arr=sc.download_file(groupName,fileName); </p>
+<p>System.out.println(arr.length+”:::;”); </p>
+<p>sc.close(); </p>
+<p>return arr; </p>
+<p>}</p>
+<p>//文件上传 适用于java项目 </p>
+<p>public static String[] upload(String fileName)throws Exception{ </p>
+<p>TrackerClient tc=new TrackerClient(); </p>
+<p>TrackerServer ts=tc.getTrackerServer(); </p>
+<p>StorageClient sc=new StorageClient(ts); </p>
+<p>//获取文件后缀名 </p>
+<p>String hzm=fileName.substring(fileName.lastIndexOf(‘.’)); </p>
+<p>//第一个参数 文件对应的字节数组 </p>
+<p>//第二个参数 文件的后缀名 </p>
+<p>//第三个参数 文件的属性信息 可以不用设置 </p>
+<p>String[] arr=sc.upload_file(fileName,hzm,null); </p>
+<p>System.out.println(Arrays.toString(arr)); </p>
+<p>sc.close(); </p>
+<p>return arr; </p>
+<p>}</p>
+<p>//文件上传 适用于web项目 </p>
+<p>public static String[] upload(byte[] bytes,String fileName)throws </p>
+<p>Exception{</p>
+<p>TrackerClient tc=new TrackerClient(); </p>
+<p>TrackerServer ts=tc.getTrackerServer(); </p>
+<p>StorageClient sc=new StorageClient(ts); </p>
+<p>//获取文件后缀名 </p>
+<p>String hzm=fileName.substring(fileName.lastIndexOf(‘.’)); </p>
+<p>//第一个参数 文件对应的字节数组 </p>
+<p>//第二个参数 文件的后缀名 </p>
+<p>//第三个参数 文件的属性信息 可以不用设置 </p>
+<p>String[] arr=sc.upload_file(bytes,hzm,null); </p>
+<p>System.out.println(Arrays.toString(arr)); </p>
+<p>sc.close(); </p>
+<p>return arr; </p>
+<p>} </p>
+<p>}</p>
+<p>测试上传测试下载</p>
+<p><strong>4</strong> <strong>修改**</strong>cloud**<strong>云盘项目</strong> <strong>master**</strong>单机测试**</p>
+<p>注意只需要nginx对文件上传和下载的url进行转换</p>
+<p><strong>1</strong> <strong>更改**</strong>MyFileController**<strong>：文件上传</strong></p>
+<p>#添加fdfs的配置 </p>
+<p>location /group1/M00 { </p>
+<p>#root /usr/soft/fastdfs-5.11-file/storage/files/data; </p>
+<p>#不需要再指定具体目录 只需要通过ngx_fastdfs_module </p>
+<p># 此请求交给nginx_fdfs的插件取处理 </p>
+<p>#在插件的配置文件中指定了storage的存放文件的目录 </p>
+<p>ngx_fastdfs_module; </p>
+<p>}</p>
+<p>//1 文件上传 </p>
+<p>@RequestMapping(value=”/upload.action”,method = RequestMethod.POST) </p>
+<p>public ResponseVO<String> uploadMethod(MyDirectory myDirectory, </p>
+<p>@RequestParam(“dfile”)MultipartFile file, HttpServletRequest req)throws </p>
+<p>Exception{ </p>
+<p>//由文件获取md5 </p>
+<p>String fileMd5=DigestUtils.md5DigestAsHex(file.getBytes()); </p>
+<p>//查询数据库 如果数据库中存在此md5 说明相同内容的文件已经存在 </p>
+<p>MyFile myFile=myFileService.getOneByFmd5(fileMd5); </p>
+<p>if(myFile==null){<strong>2</strong> <strong>更改**</strong>MyFileController**<strong>：文件下载</strong></p>
+<p>//上传 </p>
+<p>String fileName=file.getOriginalFilename(); </p>
+<p>// String </p>
+<p>path=req.getSession().getServletContext().getRealPath(“/imgs”); </p>
+<p>// File muDi=new </p>
+<p>File(path,System.currentTimeMillis()+”_”+fileName); </p>
+<p>// file.transferTo(muDi); </p>
+<p>//上传文件到fdfs上 </p>
+<p>String[] arr=FdfsUtil.upload(file.getBytes(),fileName); </p>
+<p>//arr:::[group1, M00/00/00/wKg4gGHJZl6AMEBOAABpCgmw5e038..jpg] </p>
+<p>myFile=new MyFile(); </p>
+<p>myFile.setFmd5(fileMd5); </p>
+<p>myFile.setFsize((int)(file.getSize()/1024));//数据库存储的文件大小以kb为单位 </p>
+<p>myFile.setFurl(arr[0]+”-“+arr[1]); </p>
+<p>myFileService.addOne(myFile); </p>
+<p>}</p>
+<p>myFile=myFileService.getOneByFmd5(fileMd5); </p>
+<p>//创建mydirectory </p>
+<p>myDirectory.setDtype(1);//文件类型 </p>
+<p>myDirectory.setDtime(new Date()); </p>
+<p>myDirectory.setDsize(myFile.getFsize()); </p>
+<p>myDirectory.setDprivate(0); </p>
+<p>myDirectory.setDfid(myFile.getFid()); </p>
+<p>myDirectoryService.addOne(myDirectory); </p>
+<p>return new ResponseVO<String>(200,”文件上传成功！”,null); </p>
+<p>}</p>
+<p>//2 文件下载 </p>
+<p>@RequestMapping(value=”/download.action”,method = RequestMethod.GET) </p>
+<p>public ResponseEntity&lt;byte[]&gt; downloadMethod(int fid,HttpServletRequest </p>
+<p>req)throws Exception{ </p>
+<p>MyFile myFile=myFileService.getOneByFid(fid); </p>
+<p>//获取文件的类型 </p>
+<p>String </p>
+<p>type=req.getSession().getServletContext().getMimeType(myFile.getFurl()); </p>
+<p>//获取真实路径 </p>
+<p>// String </p>
+<p>path=req.getSession().getServletContext().getRealPath(“/imgs”); </p>
+<p>// File yuanFile=new File(path,myFile.getFurl()); </p>
+<p>// byte[] arr= FileUtils.readFileToByteArray(yuanFile); </p>
+<p>//fdfs文件下载 </p>
+<p>String url=myFile.getFurl(); </p>
+<p>String fileGroup=url.substring(0,url.indexOf(“-“)); </p>
+<p>String fileName=url.substring(url.indexOf(“-“)+1); </p>
+<p>byte[] arr=FdfsUtil.download(fileGroup,fileName); </p>
+<p>//创建heander对象 响应头 </p>
+<p>HttpHeaders headers=new HttpHeaders(); </p>
+<p>headers.set(“Content-Type”, type); </p>
+<p>headers.set(“Content-Disposition”, “attachment;filename=”+ </p>
+<p>URLEncoder.encode(myFile.getFurl(), “utf-8”)); </p>
+<p>//获取源文件 </p>
+<p>//context.get<strong>3</strong> <strong>修改页面：**</strong>index.jsp**</p>
+<p><strong>4</strong> <strong>打包项目 到**</strong>master**<strong>上</strong></p>
+<p>删除master的tomcat/webapps下所有cloud的文件</p>
+<p>上传</p>
+<p>ResponseEntity&lt;byte[]&gt; entity=new ResponseEntity&lt;byte[]&gt;(arr,headers, </p>
+<p>HttpStatus.OK); </p>
+<p>return entity; </p>
+<p>}</p>
+<p>&lt;c:url value=”/“ var=”path” scope=”page”/&gt; </p>
+<!--1.1 引入min.css--> 
+
+<link type="text/css" rel="stylesheet" href="${pageScope.path}/bootstrap-3.3.7- 
+
+<p>dist/css/bootstrap.min.css”/&gt; </p>
+<p>… </p>
+<!--1.3 引入jquery--> 
+
+<script type="text/javascript" src="${pageScope.path}/js/jquery-3.3.1.min.js"> 
+
+</script> 
+
+<!--0:定义全局变量--> 
+
+<script type="text/javascript"> 
+
+var uid; 
+
+var dfu="0"; 
+
+var path="${pageScope.path}/"; 
+
+</script> 
+
+<p>… </p>
+<div class="form-group"> 
+
+<p><label class="control-label">验 证 码：</label> </p>
+<img src="${pageScope.path}/user/yzmImg.action" id="img_yzm" /> 
+
+<input type="text" class="form-control" name="uyzm" value="1234"> 
+
+</div> 
+
+<p>… </p>
+<p>//更改验证码 </p>
+<script type="text/javascript"> 
+
+$("#img_yzm").bind("click",function(){ 
+
+$("#img_yzm").attr("src","${pageScope.path}/user/yzmImg.action? 
+
+n="+Math.random()); 
+
+}); 
+
+</script> 
+
+<p>[root@java34master webapps]# pwd </p>
+<p>/usr/soft/tomcat9.0/webapps </p>
+<p>[root@java34master webapps]# rm -rf test05* </p>
+<p>[root@java34master webapps]# ll </p>
+<p>总用量 17740 </p>
+<p>… </p>
+<p>-rw-r–r– 1 root root 18160870 6月 15 15:37 test05_cloud.war<strong>5</strong> <strong>开启**</strong>redis**</p>
+<p>开启redis的服务器端</p>
+<p>开启redis的客户端</p>
+<p>验证登录密码</p>
+<p><strong>6</strong> <strong>开启**</strong>master**<strong>上的**</strong>tomcat**<strong>和日志监控</strong></p>
+<p><strong>7</strong> <strong>开启**</strong>nginx**</p>
+<p><strong>8</strong> <strong>通过浏览器访问</strong></p>
+<p>[root@java34master ~]# cd /usr/soft/redis/bin </p>
+<p>[root@java34master bin]# ./redis-server redis.conf </p>
+<p>[root@java34master ~]# cd /usr/soft/redis/bin </p>
+<p>[root@java34master bin]# ./redis-cli </p>
+<p>127.0.0.1:6379&gt; config set requirepass 123456 #如果永久设置成功 此命令不需要再执行 </p>
+<p>OK</p>
+<p>127.0.0.1:6379&gt; auth 123456 </p>
+<p>OK</p>
+<p>127.0.0.1:6379&gt; keys * </p>
+<ol>
+<li>“name1” </li>
+</ol>
+<p>127.0.0.1:6379&gt; </p>
+<p>[root@java34master ~]# cd /usr/soft/tomcat9.0/bin </p>
+<p>[root@java34master bin]# startup.sh </p>
+<p>… </p>
+<p>Tomcat started. </p>
+<p>[root@java34master bin]# tail -f /usr/soft/tomcat9.0/logs/catalina.out </p>
+<p>[root@java34master sbin]# pwd </p>
+<p>/usr/soft/nginx_fdfs/sbin </p>
+<p>[root@java34master sbin]# ./nginx -c /usr/soft/nginx_fdfs/conf/nginx.conf -s </p>
+<p>reload </p>
+<p>ngx_http_fastdfs_set pid=11512tomcat打印的信息</p>
+<p>在storage中查看</p>
+<p><strong>5</strong> <strong>集群实现：</strong></p>
+<p>JDBC Connection [com.mysql.jdbc.JDBC4Connection@7d1af994] will not be managed by </p>
+<p>Spring </p>
+<p>==&gt; Preparing: select * from tab_my_file where fid=? </p>
+<p>==&gt; Parameters: 209(Integer) </p>
+<p>&lt;== Columns: fid, fsize, furl, fmd5 </p>
+<p>&lt;== Row: 209, &lt;<BLOB>&gt;, group1/M00/00/00/wKj- </p>
+<p>gGDIXH2AeXlVAAFdayjJ2sY74..jpg, c97c85de53887055f4f7ad1e2c7f803e </p>
+<p>&lt;== Total: 1 </p>
+<p>Closing non transactional SqlSession </p>
+<p>[org.apache.ibatis.session.defaults.DefaultSqlSession@1973bf12]<strong>5.1</strong> <strong>更改项目：需要动静分离 使用**</strong>index.html** <strong>而不是</strong></p>
+<p><strong>index.jsp</strong></p>
+<p>所有的url都更改为<a target="_blank" rel="noopener" href="http://192.168.56.128/cloud37">http://192.168.56.128:80/cloud37</a></p>
+<p><strong>5.2</strong> <strong>在**</strong>master**<strong>上创建文件夹</strong> <strong>/usr/share/nginx</strong></p>
+<p><strong>5.3</strong> <strong>把所有的静态资源文件夹**</strong>cloud37**<strong>上传</strong></p>
+<p><strong>到**</strong>/usr/share/nginx**<strong>下</strong></p>
+<p><strong>5.4</strong> <strong>更改**</strong>nginx**<strong>的配置文件：</strong></p>
+<p><strong>/usr/soft/nginx_fdfs/conf/nginx.conf</strong></p>
+<link type="text/css" rel="stylesheet" 
+
+<p>href=”<a target="_blank" rel="noopener" href="http://192.168.56.128/cloud37/bootstrap-3.3.7-">http://192.168.56.128:80/cloud37/bootstrap-3.3.7-</a> </p>
+<p>dist/css/bootstrap.min.css”/&gt; </p>
+<p>var path = “<a target="_blank" rel="noopener" href="http://192.168.56.128/cloud37/&quot;">http://192.168.56.128:80/cloud37/&quot;</a>; </p>
+<img src="http://192.168.56.128:80/cloud37/user/yzmImg.action" id="img_yzm"/> 
+
+<p>$(“#img_yzm”).attr(“src”, “<a target="_blank" rel="noopener" href="http://192.168.56.128/cloud37/user/yzmImg.action">http://192.168.56.128:80/cloud37/user/yzmImg.action</a>? </p>
+<p>n=” + Math.random()); </p>
+<p>[root@java37master cloud37]# pwd </p>
+<p>/usr/share/nginx/cloud37 </p>
+<p>[root@java37master cloud37]# ll </p>
+<p>总用量 44 </p>
+<p>drwxr-xr-x 6 root root 51 12月 27 16:09 bootstrap-3.3.7-dist </p>
+<p>drwxr-xr-x 2 root root 6 12月 27 16:09 css </p>
+<p>drwxr-xr-x 2 root root 249 12月 27 16:09 imgs </p>
+<p>-rw-r–r– 1 root root 20318 12月 27 16:09 index.html </p>
+<p>-rw-r–r– 1 root root 22377 12月 27 16:09 index.jsp </p>
+<p>drwxr-xr-x 2 root root 68 12月 27 16:09 js </p>
+<p>[root@java37master nginx]# cd /usr/soft/nginx_fdfs/conf/ </p>
+<p>[root@java37master conf]# cat nginx.conf </p>
+<p>user root; #指定用户名 </p>
+<p>worker_processes 1; </p>
+<p>events { </p>
+<p>worker_connections 1024; </p>
+<p>}</p>
+<p>http {</p>
+<p>include mime.types; </p>
+<p>default_type application/octet-stream; </p>
+<p>sendfile on;keepalive_timeout 65; </p>
+<p>#为三台服务器对应的集群 起个名字 </p>
+<p>upstream cloudserver </p>
+<p>{ </p>
+<p>#1轮训 默认 </p>
+<p>#2权重 </p>
+<p># #weight:指定比例 </p>
+<p># #fail_timeout:指定最大等待时间 </p>
+<p>#server 192.168.56.128:8080 weight=1 fail_timeout=10s; </p>
+<p>#server 192.168.56.129:8080 weight=1 fail_timeout=10s; </p>
+<p>#server 192.168.56.130:8080 weight=4 fail_timeout=10s; </p>
+<p>#3ip_hash </p>
+<p>#ip_hash; </p>
+<p>#server 192.168.56.128:8080 fail_timeout=10s; </p>
+<p>#server 192.168.56.129:8080 fail_timeout=10s; </p>
+<p>#server 192.168.56.130:8080 fail_timeout=10s; </p>
+<p>#</p>
+<p>#4 fair </p>
+<p>#server 192.168.56.128:8080; </p>
+<p>#server 192.168.56.129:8080; </p>
+<p>#server 192.168.56.130:8080; </p>
+<p>#fair; </p>
+<p>#</p>
+<p>#5 url_hash </p>
+<p>#server 192.168.56.128:8080 fail_timeout=10s; </p>
+<p>#server 192.168.56.129:8080 fail_timeout=10s; </p>
+<p>#server 192.168.56.130:8080 fail_timeout=10s; </p>
+<p>#hash $request_uri; </p>
+<p>server 192.168.56.128:8080; </p>
+<p>server 192.168.56.129:8080; </p>
+<p>server 192.168.56.130:8080; </p>
+<p>}</p>
+<p>server { </p>
+<p>listen 80; </p>
+<p>#指定nginx的主机的ip地址 master的ip </p>
+<p>server_name 192.168.56.128; </p>
+<p># 图片上传下载请求url的转换 </p>
+<p>location /group1/M00 { </p>
+<p>#root /usr/soft/fastdfs-5.11-file/storage/files/data; </p>
+<p>ngx_fastdfs_module; </p>
+<p>}</p>
+<p>#动静分离 </p>
+<p>location ~ .*.(html|css|js|eot|svg|ttf|woff|woff2)$ </p>
+<p>{ </p>
+<p>root /usr/share/nginx; </p>
+<p>}</p>
+<p>#指定url的转换规则 </p>
+<p>location /cloud37{ </p>
+<p>proxy_pass <a target="_blank" rel="noopener" href="http://cloudserver/java37_08_cloud">http://cloudserver/java37_08_cloud</a>; </p>
+<p>#设置rsids的session共享：需要指定/cloud34和/test05_cloud是同一个目录 </p>
+<p>proxy_cookie_path /java37_08_cloud /cloud37;<strong>5.5</strong> <strong>重启**</strong>nginx**</p>
+<p><strong>5.6</strong> <strong>启动**</strong>redis**</p>
+<p><strong>5.7</strong> <strong>关闭三个服务器上的**</strong>tomcat**</p>
+<p><strong>5.8</strong> <strong>清空三个服务器的**</strong>webapps*<strong><em>下的所有**<strong>java\</strong></em></strong>文件夹**</p>
+<p><strong>5.9</strong> <strong>把**</strong>war**<strong>添加到三台服务器的**</strong>webapps**<strong>下 并启动**</strong>tomcat**</p>
+<p><strong>并开启日志监控</strong></p>
+<p><strong>5.10</strong> <strong>浏览器访问</strong></p>
+<p><a target="_blank" rel="noopener" href="http://192.168.56.128/cloud37/index.html">http://192.168.56.128:80/cloud37/index.html</a></p>
+<p>选择文件上传和下载 </p>
+<p>在master的storage的files/data/00/00下找到上传的文件</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
@@ -1701,11 +2273,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color3">FastDFS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1717,11 +2285,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Hexo,hexo的插件</a>
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hibernate</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1729,27 +2297,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hibernate</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">项目</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">过滤器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">监听器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Ajax</a>
+                <a href="javascript:void(0)" class="js-tag color3">Hexo,hexo的插件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1758,6 +2314,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">项目</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1773,6 +2333,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
@@ -1781,19 +2345,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Oracle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SSH</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shell</a>
+                <a href="javascript:void(0)" class="js-tag color2">Oracle</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1801,11 +2357,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SSM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+                <a href="javascript:void(0)" class="js-tag color1">Shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1813,11 +2365,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SSM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">XML</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Tomcat</a>
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">大数据</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1826,14 +2386,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Apache Shiro安全框架</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">大数据</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Web</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1853,11 +2405,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">English</a>
+                <a href="javascript:void(0)" class="js-tag color3">课题</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">课题</a>
+                <a href="javascript:void(0)" class="js-tag color3">English</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1865,7 +2417,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">FastDFS</a>
+                <a href="javascript:void(0)" class="js-tag color2">Tomcat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">过滤器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">监听器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Ajax</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Web</a>
               </li>
             
             <div class="clearfix"></div>
